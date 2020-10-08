@@ -516,8 +516,14 @@ data MagicalCity = MagicalCity
     , cityHouses :: [House]
     } deriving (Show)
 
+hasWalls :: MagicalCity -> Bool
+hasWalls (MagicalCity _ (CastleWithWalls _) _) = True
+hasWalls _                                     = False
+
 buildCastle :: String -> MagicalCity -> MagicalCity
-buildCastle name city = city { cityCastle = Castle name }
+buildCastle name city
+    | hasWalls city = city { cityCastle = CastleWithWalls name }
+    | otherwise     = city { cityCastle = Castle name }
 
 buildHouse :: House -> MagicalCity -> MagicalCity
 buildHouse h city = city { cityHouses = h : cityHouses city }
