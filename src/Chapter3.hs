@@ -1009,6 +1009,8 @@ newtype Challenge x = Challenge (Maybe x)
 instance (Append x) => Append (Challenge x) where
     append :: Challenge x -> Challenge x -> Challenge x
     append (Challenge (Just a)) (Challenge (Just b)) = Challenge $ Just $ append a b
+    append (Challenge Nothing) _ = Challenge Nothing
+    append _ (Challenge Nothing) = Challenge Nothing
 
 {-
 =🛡= Standard Typeclasses and Deriving
