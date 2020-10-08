@@ -1080,7 +1080,7 @@ nextDay Sunday = Monday
 nextDay d = succ d
 
 daysToParty :: DayOfWeek -> Int
-daysToParty d = mod (fromEnum Friday - fromEnum d + 7) 7
+daysToParty d = mod (fromEnum Friday - fromEnum d) 7
 
 {-
 =💣= Task 9*
